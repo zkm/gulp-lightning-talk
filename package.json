@@ -1,0 +1,15 @@
+{
+  "name": "gulp-lightning-talk",
+  "version": "0.0.1",
+  "description": "The HTML Presentation Framework",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zach Schneider",
+  "email": "me@zachschneider.com",
+  "web": "http://zachschneider.com",
+  "license": "ISC"
+}
