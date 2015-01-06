@@ -2,21 +2,41 @@
   "name": "gulp-lightning-talk",
   "version": "0.0.1",
   "description": "The HTML Presentation Framework",
-  "directories": {
-    "test": "test"
+  "homepage": "http://zkm.github.io/gulp-lightning-talk/",
+  "author": {
+    "name": "Zach Schneider",
+    "email": "me@zachschneider.com",
+    "web": "http://zachschneider.com"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zkm/gulp-lightning-talk.git"
   },
-  "author": "Zach Schneider",
-  "email": "me@zachschneider.com",
-  "web": "http://zachschneider.com",
-  "license": "ISC",
+  "engines": {
+    "node": "~0.8.0"
+  },
   "dependencies": {
-    "gulp-install": "^0.2.0",
-    "gulp-sass": "^1.2.4"
+    "underscore": "~1.5.1",
+    "express": "~2.5.9",
+    "mustache": "~0.7.2",
+    "socket.io": "~0.9.13"
   },
   "devDependencies": {
-    "gulp-connect": "^2.2.0"
-  }
+    "gulp": "^3.8.10",
+    "gulp-connect": "^2.2.0",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-install": "^0.2.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-qunit": "^1.1.0",
+    "gulp-sass": "^1.2.4",
+    "gulp-uglify": "^1.0.2",
+    "gulp-watch": "^3.0.0",
+    "gulp-zip": "^2.0.2"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ZKM/gulp-lightning-talk/blob/master/LICENSE"
+    }
+  ]
 }
