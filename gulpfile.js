@@ -2,6 +2,9 @@
 var gulp = require('gulp'),
    qunit = require('gulp-qunit'),
   jshint = require('gulp-jshint'),
+  cssmin = require('gulp-cssmin'),
+  rename = require("gulp-rename"),
+  uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
  connect = require('gulp-connect'),
      zip = require('gulp-zip');
@@ -29,6 +32,15 @@ gulp.task('html', function () {
     .pipe(connect.reload());
 }),
 
+gulp.task('cssmin', function () {
+    gulp.src('./css/reveal.css')
+        .pipe(cssmin())
+        .pipe(rename(
+          {suffix: '.min'}
+        ))
+        .pipe(gulp.dest('./css'));
+}),
+
 gulp.task('sass', function () {
     gulp.src('./css/theme/source/*.scss')
         .pipe(sass())
@@ -54,7 +66,7 @@ gulp.task('watch', function () {
 }),
 
 // Default Task
-gulp.task('default', [ 'jshint', 'cssmin', 'uglify', 'qunit' ]);
+gulp.task('default', [ 'jshint', 'cssmin', 'qunit' ]);
 
 // Theme Task
 gulp.task('themes', ['sass']);
