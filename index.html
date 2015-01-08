@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>gulp.js - What's the big deal</title>
+
+	<meta name="description" content="Lightning Talks | Gulp.js">
+	<meta name="author" content="Zach Schneider">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="css/reveal.min.css">
+	<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+	<script>
+		if( window.location.search.match( /print-pdf/gi ) ) {
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = 'css/print/pdf.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		}
+	</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Gulp.js</h1>
+					<h3>What's the big deal</h3>
+					<p>
+						<small>Created by <a href="http://zachschneider.com">Zach Schneider</a> / <a href="http://twitter.com/zkm">@zkm</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What is Gulp.js</h2>
+					<p class="fragment">
+						 Gulp is an automated task runner — or build process.
+					</p>
+
+					<aside class="notes">
+					You got this Zach, no pressure.
+					</aside>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Great another Task Runner...</h2>
+						<p>
+							<a href="#" class="navigate-down">What makes Gulp unique</a>.
+						</p>
+					</section>
+					<section>
+						<h2>Speed</h2>
+						<p>Speedtesting between gulp.js and Grunt</p>
+						<img src="./lib/img/featured.gif" alt="" />
+					</section>
+					<section>
+						<h2>Speed comparison test</h2>
+						<p>Sass compilation</p>
+						<a href="#/2/3" class="image">
+							<img src="./lib/img/compare-sass.gif" alt="sass" />
+						</a>
+					</section>
+					<section>
+						<h2>Another Speed comparison test</h2>
+						<p>Javascript minification and concatination using Uglify.js</p>
+						<a href="#/3" class="image">
+							<img src="./lib/img/compare-js.gif" alt="js" />
+						</a>
+					</section>
+					<section>
+						<h2>Write Less do more.</h2>
+						<p>
+							
+						</p>
+					</section>
+
+					<section>
+						<h2>gruntfile.js</h2>
+						<p>
+							Here is an example of a gruntfile.js 
+						</p>
+						<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+grunt.initConfig({
+  sass: {
+    dist: {
+      files: [{
+        cwd: 'app/styles',
+        src: '**/*.scss',
+        dest: '../.tmp/styles',
+        expand: true,
+        ext: '.css'
+      }]
+    }
+  },
+  autoprefixer: {
+    options: ['last 1 version'],
+    dist: {
+      files: [{
+        expand: true,
+        cwd: '.tmp/styles',
+        src: '{,*/}*.css',
+        dest: 'dist/styles'
+      }]
+    }
+  },
+  watch: {
+    styles: {
+      files: ['app/styles/{,*/}*.scss'],
+      tasks: ['sass:dist', 'autoprefixer:dist']
+    }
+  }
+});
+grunt.registerTask('default', ['styles', 'watch']);
+					</code></pre>
+				</section>
+
+
+				<section>
+					<h2>gulpfile.js</h2>
+					<p>Now here is an example of a gulpfile.js doing the same thing.</p>
+					<pre><code>
+gulp.task('sass', function () {
+  gulp.src('app/styles/**/*.scss')
+    .pipe(sass())
+    .pipe(autoprefixer('last 1 version'))
+    .pipe(gulp.dest('dist/styles'));
+});
+gulp.task('default', function() {
+  gulp.run('sass');
+  gulp.watch('app/styles/**/*.scss', function() {
+    gulp.run('sass');
+  });
+});
+					</code></pre>
+				</section>
+			</section>
+
+			<section>
+			<p>Leonardo da Vinci once said</p>
+				<blockquote cite="http://www.brainyquote.com/quotes/quotes/l/leonardoda107812.html?src=t_simplicity">
+					&ldquo;Simplicity is the ultimate sophistication.&rdquo;
+				</blockquote>
+			</section>
+
+			<section>
+				<section id="fragments">
+					<h2>Install Gulp</h2>
+					<ol>
+						<li class="fragment"><code>npm install -g gulp</code></li>
+						<li class="fragment">Just like Grunt we need to create a package.json file.</li>
+						<li class="fragment">Install gulp and gulp-utils to your project <code>npm install gulp gulp-util --save-dev</code></li>
+						<li class="fragment">Create your gulpfile.js
+<pre><code>
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+
+gulp.task('default', function(){
+  // Default task code
+});									
+								</code></pre></li>
+						<li class="fragment">Now run gulp from the command line and watch the magic.</li>
+					</ol>
+
+					<aside class="notes">
+						This slide has fragments which are also stepped through in the notes window.
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<h2>Conclusion</h2>
+				<p>If you are looking for a simple and fast task runner solution, I would recommend using Gulp.</p>
+			</section>
+
+			<section>
+				<h2>Links</h2>
+				<ul>
+					<li><a href="http://gulpjs.com/">Gulp.js</a></li>
+					<li><a href="https://github.com/ZKM/gulp-lightning-talk">Source code on GitHub</a></li>
+					<li><a href="http://twitter.com/zkm">Follow me on Twitter</a></li>
+					<li><a href="http://productiveedge.com">Productive Edge</a></li>
+				</ul>
+			</section>
+
+			<section>
+				<h1>THE END</h1>
+				<h3>BY Zach Schneider / @ZKM</h3>
+			</section>
+		</div>
+	</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+</script>
+
+</body>
+</html>
