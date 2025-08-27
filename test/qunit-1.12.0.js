@@ -750,6 +750,9 @@ config = {
 // Export global variables, unless an 'exports' object exists,
 // in that case we assume we're in CommonJS (dealt with on the bottom of the script)
 if ( typeof exports === "undefined" ) {
+	// Ensure QUnit.config exists before assigning window.QUnit so external hooks
+	// that watch the QUnit global can safely access QUnit.config on first set.
+	QUnit.config = config;
 	extend( window, QUnit.constructor.prototype );
 
 	// Expose QUnit object

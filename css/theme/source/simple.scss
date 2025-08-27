@@ -1,3 +1,4 @@
+@use "sass:color";
 /**
  * A simple theme for reveal.js presentations, similar
  * to the default theme. The accent color is darkblue.
@@ -8,8 +9,7 @@
 
 
 // Default mixins and settings -----------------
-@import "../template/mixins";
-@import "../template/settings";
+@use "../template/base" as *;
 // ---------------------------------------------
 
 
@@ -28,7 +28,7 @@ $headingTextShadow: none;
 $headingTextTransform: none;
 $backgroundColor: #fff;
 $linkColor: #00008B;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: color.adjust($linkColor, $lightness: 20%);
 $selectionBackgroundColor: rgba(0, 0, 0, 0.99);
 
 // Change text colors against dark slide backgrounds

@@ -1,3 +1,4 @@
+@use "sass:color";
 /**
  * White theme for reveal.js. This is the opposite of the 'black' theme.
  *
@@ -29,8 +30,8 @@ $headingLetterSpacing: normal;
 $headingTextTransform: uppercase;
 $headingFontWeight: 600;
 $linkColor: #2a76dd;
-$linkColorHover: lighten( $linkColor, 15% );
-$selectionBackgroundColor: lighten( $linkColor, 25% );
+$linkColorHover: color.adjust($linkColor, $lightness: 15%);
+$selectionBackgroundColor: color.adjust($linkColor, $lightness: 25%);
 
 $heading1Size: 2.5em;
 $heading2Size: 1.6em;

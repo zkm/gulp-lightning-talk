@@ -1,3 +1,4 @@
+@use "sass:color";
 /**
  * Solarized Light theme for reveal.js.
  * Author: Achim Staebler
@@ -5,8 +6,7 @@
 
 
 // Default mixins and settings -----------------
-@import "../template/mixins";
-@import "../template/settings";
+@use "../template/base" as *;
 // ---------------------------------------------
 
 
@@ -48,12 +48,12 @@ $headingColor: $base01;
 $headingTextShadow: none;
 $backgroundColor: $base3;
 $linkColor: $blue;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: color.adjust($linkColor, $lightness: 20%);
 $selectionBackgroundColor: $magenta;
 
 // Background generator
 // @mixin bodyBackground() {
-// 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
+// 	@include radial-gradient( rgba($base3,1), rgba(color.adjust($base3, $lightness: 20%),1) );
 // }
 
 

@@ -1,3 +1,4 @@
+@use "sass:color";
 /**
  * Blood theme for reveal.js
  * Author: Walther http://github.com/Walther
@@ -10,9 +11,8 @@
  *
  */
 
- // Default mixins and settings -----------------
-@import "../template/mixins";
-@import "../template/settings";
+// Default mixins and settings -----------------
+@use "../template/base" as *;
 // ---------------------------------------------
 
 // Include theme-specific fonts
@@ -40,7 +40,7 @@ $heading1TextShadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b
 
 // Links
 $linkColor: $blood;
-$linkColorHover: lighten( $linkColor, 20% );
+$linkColorHover: color.adjust($linkColor, $lightness: 20%);
 
 // Text selection
 $selectionBackgroundColor: $blood;

@@ -11,5 +11,5 @@ Reveal.addEventListener( 'ready', function() {
 
 } );
 
-Reveal.initialize();
+Reveal.initialize({ plugins: [ RevealMarkdown ] });
 
