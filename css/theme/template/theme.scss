@@ -4,6 +4,9 @@
  * GLOBAL STYLES
  *********************************************/
 
+// Ensure defaults and mixins are available before exposing variables
+@import "./settings";
+@import "./mixins";
 @import "./exposer";
 
 .reveal-viewport {
