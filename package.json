@@ -45,7 +45,7 @@
     "colors": "^1.4.0",
     "core-js": "^3.12.1",
     "fitty": "^2.3.0",
-    "glob": "11.0.3",
+    "glob": "^11.1.0",
     "gulp": "5.0.1",
     "gulp-autoprefixer": "9.0.0",
     "gulp-clean-css": "^4.2.0",
@@ -56,12 +56,12 @@
     "highlight.js": "11.11.1",
     "marked": "16.2.0",
     "node-qunit-puppeteer": "^2.1.0",
+    "puppeteer": "22.15.0",
     "qunit": "^2.17.2",
     "rollup": "4.48.1",
     "rollup-plugin-terser": "^7.0.2",
     "sass": "^1.39.2",
-  "yargs": "18.0.0",
-  "puppeteer": "22.15.0"
+    "yargs": "18.0.0"
   },
   "browserslist": "> 2%, not dead",
   "eslintConfig": {
