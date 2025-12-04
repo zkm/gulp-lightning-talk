@@ -3,6 +3,8 @@ bower_components/
 .sass-cache/
 .tmp/
 dist/
+.pnp.cjs
+.pnp.loader.mjs
 
 # Compiled source #
 ###################
