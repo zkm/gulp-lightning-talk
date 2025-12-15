@@ -21,5 +21,8 @@ jobs:
       - name: Install dependencies (legacy peer deps)
         run: npm install --legacy-peer-deps
 
+      - name: Show npm versions
+        run: npm ls --depth=0 || true
+
       - name: Run tests
         run: npm test

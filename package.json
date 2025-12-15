@@ -47,7 +47,7 @@
     "fitty": "^2.4.2",
     "glob": "^13.0.0",
     "gulp": "^5.0.1",
-    "gulp-autoprefixer": "^10.0.0",
+    "gulp-autoprefixer": "8.0.0",
     "gulp-clean-css": "^4.3.0",
     "gulp-connect": "^5.7.0",
     "gulp-eslint": "^6.0.0",
