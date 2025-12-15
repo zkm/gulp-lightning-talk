@@ -494,12 +494,9 @@ gulp.task("eslint", () =>
   gulp.src(["./js/**", "gulpfile.js"]).pipe(eslint()).pipe(eslint.format())
 );
 
-gulp.task("test", gulp.series("eslint", "qunit"));
+gulp.task("test", gulp.series(gulp.parallel("js", "css", "plugins"), "eslint", "qunit"));
 
-gulp.task(
-  "default",
-  gulp.series(gulp.parallel("js", "css", "plugins"), "test")
-);
+gulp.task("default", gulp.series("test"));
 
 gulp.task("build", gulp.parallel("js", "css", "plugins"));
 
