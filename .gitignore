@@ -3,8 +3,15 @@ bower_components/
 .sass-cache/
 .tmp/
 dist/
-.pnp.cjs
-.pnp.loader.mjs
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
 
 # Compiled source #
 ###################
