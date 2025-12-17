@@ -57,11 +57,23 @@ async function getZip() {
 const eslint = require("gulp-eslint");
 const minify = require("gulp-clean-css");
 const connect = require("gulp-connect");
-const _autoprefixer = require("gulp-autoprefixer");
-const autoprefixer =
-  _autoprefixer && _autoprefixer.default
-    ? _autoprefixer.default
-    : _autoprefixer;
+// Lazy-load gulp-autoprefixer to handle ESM-only distribution
+let autoprefixer;
+async function getAutoprefixer() {
+  if (autoprefixer) return autoprefixer;
+  try {
+    const mod = require("gulp-autoprefixer");
+    autoprefixer = mod.default || mod;
+  } catch (e) {
+    if (e && e.code === "ERR_REQUIRE_ESM") {
+      const mod = await import("gulp-autoprefixer");
+      autoprefixer = mod.default || mod;
+    } else {
+      throw e;
+    }
+  }
+  return autoprefixer;
+}
 
 let argv = {};
 try {
@@ -267,15 +279,16 @@ gulp.task("css-themes", () =>
     .pipe(gulp.dest("./dist/theme"))
 );
 
-gulp.task("css-core", () =>
-  gulp
+gulp.task("css-core", async () => {
+  const autoprefixer = await getAutoprefixer();
+  return gulp
     .src(["css/reveal.scss"])
     .pipe(compileSass())
     .pipe(autoprefixer())
     .pipe(minify({ compatibility: "ie9" }))
     .pipe(prependBanner(banner))
-    .pipe(gulp.dest("./dist"))
-);
+    .pipe(gulp.dest("./dist"));
+});
 
 gulp.task("css", gulp.parallel("css-themes", "css-core"));
 
