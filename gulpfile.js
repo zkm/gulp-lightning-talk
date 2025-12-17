@@ -9,7 +9,7 @@ const through = require("through2");
 const puppeteer = require("puppeteer");
 
 const { rollup } = require("rollup");
-const { terser } = require("rollup-plugin-terser");
+const terser = require("@rollup/plugin-terser");
 const babel = require("@rollup/plugin-babel").default;
 const commonjs = require("@rollup/plugin-commonjs");
 const resolve = require("@rollup/plugin-node-resolve").default;

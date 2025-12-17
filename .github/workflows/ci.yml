@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install dependencies (legacy peer deps)
-        run: npm install --legacy-peer-deps
+      - name: Install dependencies
+        run: yarn install --immutable
 
-      - name: Show npm versions
-        run: npm ls --depth=0 || true
+      - name: Show yarn versions
+        run: yarn list --depth=0 || true
 
       - name: Run tests
-        run: npm test
+        run: yarn test
