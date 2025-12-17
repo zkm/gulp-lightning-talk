@@ -190,6 +190,8 @@ function compileSass() {
         loadPaths: ["css/", "css/theme/template"],
         style: "expanded",
         url: pathToFileURL(transformedFile.path),
+        // Silence deprecation warnings from Sass (e.g., @import) to keep test output clean
+        logger: sass.Logger && sass.Logger.silent ? sass.Logger.silent : undefined,
       });
       transformedFile.extname = ".css";
       transformedFile.contents = Buffer.from(result.css);
