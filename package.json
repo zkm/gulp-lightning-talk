@@ -1,9 +1,9 @@
 {
-  "name": "reveal.js",
-  "version": "4.4.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "https://revealjs.com",
-  "subdomain": "revealjs",
+  "name": "gulp-lightning-talk",
+  "version": "0.1.0",
+  "description": "Slides for a lightning talk built on a customized Reveal.js fork.",
+  "homepage": "https://github.com/zkm/gulp-lightning-talk",
+  "subdomain": "gulp-lightning-talk",
   "main": "dist/reveal.js",
   "module": "dist/reveal.esm.js",
   "license": "MIT",
@@ -13,14 +13,18 @@
     "build": "gulp build"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "https://hakim.se"
+    "name": "Zach  Schneider",
+    "email": "me@zachschneider.com",
+    "url": "https://zkm.tw/"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git@github.com:zkm/gulp-lightning-talk.git"
   },
+  "bugs": {
+    "url": "https://github.com/zkm/gulp-lightning-talk/issues"
+  },
+  "private": true,
   "engines": {
     "node": ">=10.0.0"
   },
