@@ -36,7 +36,24 @@ const sass = require("sass");
 
 const gulp = require("gulp");
 const tap = require("gulp-tap");
-const zip = require("gulp-zip");
+// Lazy-load gulp-zip to avoid ESM require errors in CommonJS environments
+let zip; // resolved on-demand
+async function getZip() {
+  if (zip) return zip;
+  try {
+    // Prefer CommonJS require where supported
+    zip = require("gulp-zip");
+  } catch (e) {
+    if (e && e.code === "ERR_REQUIRE_ESM") {
+      // Fallback to dynamic import for ESM-only distributions
+      const mod = await import("gulp-zip");
+      zip = mod.default || mod;
+    } else {
+      throw e;
+    }
+  }
+  return zip;
+}
 const eslint = require("gulp-eslint");
 const minify = require("gulp-clean-css");
 const connect = require("gulp-connect");
@@ -531,8 +548,9 @@ gulp.task("build", gulp.parallel("js", "css", "plugins"));
 
 gulp.task(
   "package",
-  gulp.series(() =>
-    gulp
+  gulp.series(async () => {
+    const zipPlugin = await getZip();
+    return gulp
       .src(
         [
           "./index.html",
@@ -544,9 +562,9 @@ gulp.task(
         ],
         { base: "./" }
       )
-      .pipe(zip("reveal-js-presentation.zip"))
-      .pipe(gulp.dest("./"))
-  )
+      .pipe(zipPlugin("reveal-js-presentation.zip"))
+      .pipe(gulp.dest("./"));
+  })
 );
 
 gulp.task("reload", () => gulp.src(["*.html", "*.md"]).pipe(connect.reload()));
