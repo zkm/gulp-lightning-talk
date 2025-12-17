@@ -3724,6 +3724,41 @@ __metadata:
   languageName: node
   linkType: hard
 
+"gulp-lightning-talk@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "gulp-lightning-talk@workspace:."
+  dependencies:
+    "@babel/core": "npm:^7.28.5"
+    "@babel/eslint-parser": "npm:^7.28.5"
+    "@babel/preset-env": "npm:^7.28.5"
+    "@rollup/plugin-babel": "npm:^6.1.0"
+    "@rollup/plugin-commonjs": "npm:^29.0.0"
+    "@rollup/plugin-node-resolve": "npm:^16.0.3"
+    "@rollup/plugin-terser": "npm:^0.4.4"
+    babel-plugin-transform-html-import-to-string: "npm:^2.0.0"
+    colors: "npm:^1.4.0"
+    core-js: "npm:^3.47.0"
+    fitty: "npm:^2.4.2"
+    glob: "npm:^13.0.0"
+    gulp: "npm:^5.0.1"
+    gulp-autoprefixer: "npm:^10.0.0"
+    gulp-clean-css: "npm:^4.3.0"
+    gulp-cli: "npm:^3.1.0"
+    gulp-connect: "npm:^5.7.0"
+    gulp-eslint: "npm:^6.0.0"
+    gulp-tap: "npm:^2.0.0"
+    gulp-zip: "npm:^6.1.0"
+    highlight.js: "npm:^11.11.1"
+    marked: "npm:^17.0.1"
+    node-qunit-puppeteer: "npm:^2.2.1"
+    puppeteer: "npm:^24.32.0"
+    qunit: "npm:^2.24.3"
+    rollup: "npm:^4.53.5"
+    sass: "npm:^1.97.0"
+    yargs: "npm:^18.0.0"
+  languageName: unknown
+  linkType: soft
+
 "gulp-plugin-extras@npm:^1.1.0":
   version: 1.1.0
   resolution: "gulp-plugin-extras@npm:1.1.0"
@@ -5343,41 +5378,6 @@ __metadata:
   checksum: 10c0/4eff0d4a5f9383566c7d7ec437b671cc51b25963bd61bf127c3f3d3f68e44a026d99b8d2f1ad344afff8d278a8fe70a8ea092650a716d22287e8bef7126bb2fa
   languageName: node
   linkType: hard
-
-"reveal.js@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "reveal.js@workspace:."
-  dependencies:
-    "@babel/core": "npm:^7.28.5"
-    "@babel/eslint-parser": "npm:^7.28.5"
-    "@babel/preset-env": "npm:^7.28.5"
-    "@rollup/plugin-babel": "npm:^6.1.0"
-    "@rollup/plugin-commonjs": "npm:^29.0.0"
-    "@rollup/plugin-node-resolve": "npm:^16.0.3"
-    "@rollup/plugin-terser": "npm:^0.4.4"
-    babel-plugin-transform-html-import-to-string: "npm:^2.0.0"
-    colors: "npm:^1.4.0"
-    core-js: "npm:^3.47.0"
-    fitty: "npm:^2.4.2"
-    glob: "npm:^13.0.0"
-    gulp: "npm:^5.0.1"
-    gulp-autoprefixer: "npm:^10.0.0"
-    gulp-clean-css: "npm:^4.3.0"
-    gulp-cli: "npm:^3.1.0"
-    gulp-connect: "npm:^5.7.0"
-    gulp-eslint: "npm:^6.0.0"
-    gulp-tap: "npm:^2.0.0"
-    gulp-zip: "npm:^6.1.0"
-    highlight.js: "npm:^11.11.1"
-    marked: "npm:^17.0.1"
-    node-qunit-puppeteer: "npm:^2.2.1"
-    puppeteer: "npm:^24.32.0"
-    qunit: "npm:^2.24.3"
-    rollup: "npm:^4.53.5"
-    sass: "npm:^1.97.0"
-    yargs: "npm:^18.0.0"
-  languageName: unknown
-  linkType: soft
 
 "rimraf@npm:2.6.3":
   version: 2.6.3
