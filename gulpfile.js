@@ -2,8 +2,27 @@ const pkg = require("./package.json");
 const path = require("path");
 const { pathToFileURL } = require("url");
 const glob = require("glob");
-const yargsFactory = require("yargs/yargs");
-const { hideBin } = require("yargs/helpers");
+// Lightweight argv parsing to avoid ESM require issues with yargs in some environments
+function simpleArgv(args) {
+  const out = {};
+  for (let i = 2; i < args.length; i++) {
+    const a = args[i];
+    if (typeof a === "string" && a.startsWith("--")) {
+      const segment = a.slice(2);
+      const eq = segment.indexOf("=");
+      let key, val;
+      if (eq !== -1) {
+        key = segment.slice(0, eq);
+        val = segment.slice(eq + 1);
+      } else {
+        key = segment;
+        val = args[i + 1] && !String(args[i + 1]).startsWith("--") ? args[++i] : true;
+      }
+      out[key] = val;
+    }
+  }
+  return out;
+}
 const colors = require("colors");
 const through = require("through2");
 const puppeteer = require("puppeteer");
@@ -27,7 +46,15 @@ const autoprefixer =
     ? _autoprefixer.default
     : _autoprefixer;
 
-const argv = yargsFactory(hideBin(process.argv)).argv;
+let argv = {};
+try {
+  const yargsFactory = require("yargs/yargs");
+  const { hideBin } = require("yargs/helpers");
+  argv = yargsFactory(hideBin(process.argv)).argv;
+} catch (_) {
+  // Fallback parser for CI/Node setups where yargs is ESM-only
+  argv = simpleArgv(process.argv);
+}
 const root = argv.root || ".";
 const port = argv.port || 8000;
 const host = argv.host || "localhost";
