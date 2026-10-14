@@ -38,7 +38,7 @@
     "tmp": "^0.2.6",
     "tar-fs": "^3.1.1",
     "tar": "^7.5.7",
-    "brace-expansion": "^1.1.16",
+    "brace-expansion": "^1.1.21",
     "lodash": "^4.17.23",
     "qs": "^6.16.0",
     "basic-ftp": "^5.2.0",
